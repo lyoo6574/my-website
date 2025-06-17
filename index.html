@@ -5,58 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>号卡平台</title>
     <style>
+        /* 基础样式 */
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            margin: 20px 40px;
+            line-height: 1.7;
+            color: #333;
+            background-color: #f9f9f9;
         }
+        
+        /* 容器布局 */
         .container {
             max-width: 800px;
             margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-radius: 4px;
         }
+        
+        /* 标题样式 */
         h2 {
-            color: #333;
-            border-bottom: 2px solid #eee;
+            color: #2c3e50;
+            border-bottom: 2px solid #e0e0e0;
             padding-bottom: 10px;
-        }
-        .platform {
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px dashed #ddd;
-        }
-        .platform h3 {
-            color: #555;
+            font-size: 1.5rem;
             margin-top: 0;
         }
-        .link-list {
-            list-style-type: none;
-            padding-left: 15px;
+        
+        h3 {
+            color: #34495e;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
         }
-        .link-list li {
-            margin-bottom: 8px;
+        
+        /* 平台分区样式 */
+        .platform {
+            margin-bottom: 1.8rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px dashed #ddd;
         }
-        .link-list a {
-            color: #0066cc;
+        
+        /* 列表样式 */
+        ul {
+            padding-left: 20px;
+            margin-top: 0.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.6rem;
+            position: relative;
+        }
+        
+        /* 链接样式 */
+        a {
+            color: #2980b9;
             text-decoration: none;
+            transition: color 0.2s;
         }
-        .link-list a:hover {
+        
+        a:hover {
+            color: #1a5276;
             text-decoration: underline;
         }
+        
+        /* 备注样式 */
         .note {
-            font-size: 14px;
-            color: #888;
+            font-size: 0.9rem;
+            color: #7f8c8d;
             font-style: italic;
+        }
+        
+        /* 特殊文本样式 */
+        .highlight {
+            font-weight: 500;
+            color: #e74c3c;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>号卡平台</h2>
-        <p>所有平台注册默认一级代理，号易/172月激活10单起有补贴（一级代理），有量单独私聊政策！！！</p>
+        <p>所有平台注册默认一级代理，<span class="highlight">号易/172月激活10单起有补贴（一级代理）</span>，<span class="highlight">有量单独私聊政策！！！</span></p>
         
         <div class="platform">
-            <h3>朽月通讯（免税佣金，无6%）</h3>
-            <ul class="link-list">
+            <h3>朽月通讯（<span class="highlight">免税佣金，无6%</span>）</h3>
+            <ul>
                 <li><a href="这里填写朽月一级注册链接" class="note">朽月一级注册</a></li>
                 <li><a href="这里填写朽月产品资料链接" class="note">朽月产品资料</a></li>
                 <li><a href="这里填写朽月网页登陆链接" class="note">朽月网页登陆</a></li>
@@ -69,8 +104,8 @@
         </div>
         
         <div class="platform">
-            <h3>号易平台(直播免费授权，6%税）</h3>
-            <ul class="link-list">
+            <h3>号易平台(<span class="highlight">直播免费授权，6%税</span>）</h3>
+            <ul>
                 <li><a href="这里填写号易一级注册链接" class="note">号易一级注册</a></li>
                 <li><a href="这里填写号易产品资料链接" class="note">号易产品资料</a></li>
                 <li><a href="这里填写号易电脑端登陆链接" class="note">号易电脑端登陆</a></li>
@@ -83,8 +118,8 @@
         </div>
         
         <div class="platform">
-            <h3>172平台（可以注销重新注册，6%税）</h3>
-            <ul class="link-list">
+            <h3>172平台（<span class="highlight">可以注销重新注册，6%税</span>）</h3>
+            <ul>
                 <li>月激活10单起每单+5</li>
                 <li><a href="这里填写172一级注册链接" class="note">172一级注册</a></li>
                 <li>月激活50单升黑钻</li>
@@ -96,8 +131,8 @@
         </div>
         
         <div class="platform">
-            <h3>蓝畅（所有产品均可补结，6%税）</h3>
-            <ul class="link-list">
+            <h3>蓝畅（<span class="highlight">所有产品均可补结，6%税</span>）</h3>
+            <ul>
                 <li><a href="这里填写蓝畅钻石注册链接" class="note">蓝畅钻石注册</a></li>
                 <li><a href="这里填写蓝畅APP链接" class="note">蓝畅APP</a></li>
                 <li><a href="这里填写蓝畅电脑端链接" class="note">蓝畅电脑端</a></li>
@@ -106,8 +141,8 @@
         </div>
         
         <div class="platform">
-            <h3>大鑫卡业(免税，政企卡)</h3>
-            <ul class="link-list">
+            <h3>大鑫卡业(<span class="highlight">免税，政企卡</span>)</h3>
+            <ul>
                 <li><a href="这里填写大鑫一级注册链接" class="note">大鑫一级注册</a></li>
                 <li><a href="这里填写大鑫产品资料链接" class="note">大鑫产品资料</a></li>
                 <li><a href="这里填写大鑫电脑端登陆链接" class="note">大鑫电脑端登陆</a></li>
@@ -120,8 +155,8 @@
         </div>
         
         <div class="platform">
-            <h3>聚网管家（号易物联卡平台）</h3>
-            <ul class="link-list">
+            <h3>聚网管家（<span class="highlight">号易物联卡平台</span>）</h3>
+            <ul>
                 <li><a href="这里填写聚网一级注册链接" class="note">聚网一级注册</a></li>
                 <li><a href="这里填写聚网App链接" class="note">聚网App</a></li>
                 <li><a href="这里填写聚网网页端链接" class="note">聚网网页端</a></li>
@@ -131,7 +166,7 @@
         
         <div class="platform">
             <h3>推广教程</h3>
-            <ul class="link-list">
+            <ul>
                 <li><a href="这里填写新手教程①链接" class="note">新手教程①</a></li>
                 <li><a href="这里填写新手教程②链接" class="note">新手教程②</a></li>
                 <li><a href="这里填写新手教程③链接" class="note">新手教程③</a></li>

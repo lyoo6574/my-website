@@ -1,386 +1,143 @@
 <!DOCTYPE html>
-<html lang="zh">
-
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>号卡平台 - 导航网</title>
-  <style>
-    /* 基础重置样式重置 */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-
-    body {
-      background-color: #f5f7fa;
-      color: #333;
-      line-height: 1.6;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    /* 头部样式 */
-    .nk-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: #fff;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      z-index: 100;
-    }
-
-    .container-xl {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 15px;
-    }
-
-    .nk-header-wrap {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 0;
-    }
-
-    .logo-link {
-      font-size: 18px;
-      font-weight: 600;
-      color: #333;
-    }
-
-    /* 主体内容样式 */
-    .nk-content {
-      padding-top: 60px;
-      /* 预留头部空间 */
-      padding-bottom: 40px;
-    }
-
-    .red-tip {
-      color: red;
-      font-size: 16px;
-      text-align: center;
-      margin-bottom: 20px;
-      font-weight: 500;
-    }
-
-    /* 卡片样式 */
-    .card {
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-      margin-bottom: 15px;
-      overflow: hidden;
-    }
-
-    .card-inner {
-      padding: 15px;
-    }
-
-    .nya-title {
-      display: flex;
-      align-items: center;
-      margin-bottom: 15px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #eee;
-    }
-
-    .nya-title .icon {
-      margin-right: 10px;
-      font-size: 18px;
-    }
-
-    .nk-menu-text {
-      font-size: 16px;
-      font-weight: 600;
-    }
-
-    /* 按钮样式 */
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-      margin: 0 -5px;
-    }
-
-    .col-12,
-    .col-lg-3,
-    .col-md-4,
-    .col-6 {
-      padding: 0 5px;
-      margin-bottom: 10px;
-    }
-
-    .btn {
-      display: block;
-      width: 100%;
-      padding: 10px 12px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      text-align: center;
-      font-size: 14px;
-      background: #fff;
-      transition: all 0.2s;
-    }
-
-    .btn:hover {
-      background: #f5f7fa;
-      border-color: #ccc;
-    }
-
-    /* 底部样式 */
-    .nk-footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: #fff;
-      border-top: 1px solid #eee;
-      padding: 10px 0;
-      font-size: 12px;
-      color: #999;
-      text-align: center;
-    }
-
-    /* 响应式适配 */
-    @media (max-width: 576px) {
-      .col-lg-3,
-      .col-md-4 {
-        width: 50%;
-      }
-
-      .col-6 {
-        width: 33.333%;
-      }
-    }
-
-    @media (min-width: 577px) and (max-width: 768px) {
-      .col-lg-3 {
-        width: 25%;
-      }
-
-      .col-md-4 {
-        width: 33.333%;
-      }
-
-      .col-6 {
-        width: 50%;
-      }
-    }
-
-    @media (min-width: 769px) {
-      .col-lg-3 {
-        width: 25%;
-      }
-
-      .col-md-4 {
-        width: 33.333%;
-      }
-
-      .col-6 {
-        width: 50%;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>号卡平台</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        .platform {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ddd;
+        }
+        .platform h3 {
+            color: #555;
+            margin-top: 0;
+        }
+        .link-list {
+            list-style-type: none;
+            padding-left: 15px;
+        }
+        .link-list li {
+            margin-bottom: 8px;
+        }
+        .link-list a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .link-list a:hover {
+            text-decoration: underline;
+        }
+        .note {
+            font-size: 14px;
+            color: #888;
+            font-style: italic;
+        }
+    </style>
 </head>
-
-<body class="nk-body npc-invest bg-lighter">
-  <!-- 头部导航 -->
-  <div class="nk-header nk-header-fluid nk-header-fixed is-light">
-    <div class="container-xl">
-      <div class="nk-header-wrap link-between">
-        <div class="nk-header-brand">
-          <a href="/" class="logo-link">号卡平台</a>
+<body>
+    <div class="container">
+        <h2>号卡平台</h2>
+        <p>所有平台注册默认一级代理，号易/172月激活10单起有补贴（一级代理），有量单独私聊政策！！！</p>
+        
+        <div class="platform">
+            <h3>朽月通讯（免税佣金，无6%）</h3>
+            <ul class="link-list">
+                <li><a href="这里填写朽月一级注册链接" class="note">朽月一级注册</a></li>
+                <li><a href="这里填写朽月产品资料链接" class="note">朽月产品资料</a></li>
+                <li><a href="这里填写朽月网页登陆链接" class="note">朽月网页登陆</a></li>
+                <li><a href="这里填写朽月APP下载链接" class="note">朽月APP下载</a></li>
+                <li>星钻+5 星光+10起</li>
+                <li><a href="这里填写朽月官方公众号链接" class="note">朽月官方公众号</a></li>
+                <li>官方邀请码00000</li>
+                <li>有量提前升星钻</li>
+            </ul>
         </div>
-        <div class="nk-header-tools nk-header-menu">
-          <div class="nk-header-mobile">
-            <div class="nk-header-brand">
-              <a href="/" class="logo-link">
-                <span class="nio-version" style="font-size: 21px;">号卡平台</span>
-              </a>
-            </div>
-          </div>
+        
+        <div class="platform">
+            <h3>号易平台(直播免费授权，6%税）</h3>
+            <ul class="link-list">
+                <li><a href="这里填写号易一级注册链接" class="note">号易一级注册</a></li>
+                <li><a href="这里填写号易产品资料链接" class="note">号易产品资料</a></li>
+                <li><a href="这里填写号易电脑端登陆链接" class="note">号易电脑端登陆</a></li>
+                <li><a href="这里填写号易APP下载链接" class="note">号易APP下载</a></li>
+                <li>皇冠+10，金冠+15</li>
+                <li>有量提前升皇冠</li>
+                <li><a href="这里填写号易官方公众号链接" class="note">号易官方公众号</a></li>
+                <li>官方邀请码400000</li>
+            </ul>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 主体内容 -->
-  <div class="nk-content nk-content-lg nk-content-fluid">
-    <div class="container-xl">
-      <p class="red-tip">所有平台注册默认一级代理，号易/172月激活10单起有补贴（一级代理），有量单独私聊政策！！！</p>
-      <div class="nk-content-body" id="toollist"></div>
-
-      <div class="card card-preview" id="link_content" style="display:none">
-        <div class="card-inner mt-3">
-          <div class="nya-title nk-ibx-action-item progress-rating">
-            <em class="icon ni ni-link"></em>
-            <span class="nk-menu-text font-weight-bold">友情链接</span>
-          </div>
-          <div class="row g-2">
-            <div class="col-12">
-              <ul class="preview-list">
-                <li class="preview-item">
-                  <a href="https://pms.189.cn/cljy-ui/xshkzzfw/xshkzzfw_index?shopid=szs-ah&cmpid=szs-ah"
-                    class="btn btn-wider btn-outline-info btn-sm" target="_blank">电信查撤单</a>
-                </li>
-                <li class="preview-item">
-                  <a href="https://m.10010.com/myorder/" class="btn btn-wider btn-outline-info btn-sm"
-                    target="_blank">联通查撤单</a>
-                </li>
-                <li class="preview-item">
-                  <a href="https://dev.coc.10086.cn/coc/web/coc2020/cardqueryorder/"
-                    class="btn btn-wider btn-outline-info btn-sm" target="_blank">移动查撤单</a>
-                </li>
-                <li class="preview-item">
-                  <a href="https://shouji.10099.com.cn/list/" class="btn btn-wider btn-outline-info btn-sm"
-                    target="_blank">广电适配</a>
-                </li>
-                <li class="preview-item">
-                  <a href="https://getsimnum.caict.ac.cn/m/#/" class="btn btn-wider btn-outline-info btn-sm"
-                    target="_blank">一证通查</a>
-                </li>
-              </ul>
-            </div>
-          </div>
+        
+        <div class="platform">
+            <h3>172平台（可以注销重新注册，6%税）</h3>
+            <ul class="link-list">
+                <li>月激活10单起每单+5</li>
+                <li><a href="这里填写172一级注册链接" class="note">172一级注册</a></li>
+                <li>月激活50单升黑钻</li>
+                <li><a href="这里填写172产品资料链接" class="note">172产品资料</a></li>
+                <li><a href="这里填写172平台电脑端登陆链接" class="note">172平台电脑端登陆</a></li>
+                <li>App应用市场下载</li>
+                <li>邀请码60000</li>
+            </ul>
         </div>
-      </div>
+        
+        <div class="platform">
+            <h3>蓝畅（所有产品均可补结，6%税）</h3>
+            <ul class="link-list">
+                <li><a href="这里填写蓝畅钻石注册链接" class="note">蓝畅钻石注册</a></li>
+                <li><a href="这里填写蓝畅APP链接" class="note">蓝畅APP</a></li>
+                <li><a href="这里填写蓝畅电脑端链接" class="note">蓝畅电脑端</a></li>
+                <li>全网最高结算率100%</li>
+            </ul>
+        </div>
+        
+        <div class="platform">
+            <h3>大鑫卡业(免税，政企卡)</h3>
+            <ul class="link-list">
+                <li><a href="这里填写大鑫一级注册链接" class="note">大鑫一级注册</a></li>
+                <li><a href="这里填写大鑫产品资料链接" class="note">大鑫产品资料</a></li>
+                <li><a href="这里填写大鑫电脑端登陆链接" class="note">大鑫电脑端登陆</a></li>
+                <li><a href="这里填写大鑫手机端登陆链接" class="note">大鑫手机端登陆</a></li>
+                <li><a href="这里填写大鑫App下载链接" class="note">大鑫App下载</a></li>
+                <li><a href="这里填写大鑫代理必看链接" class="note">大鑫代理必看</a></li>
+                <li>官方邀请码8个8</li>
+                <li>政企卡有量私聊议价</li>
+            </ul>
+        </div>
+        
+        <div class="platform">
+            <h3>聚网管家（号易物联卡平台）</h3>
+            <ul class="link-list">
+                <li><a href="这里填写聚网一级注册链接" class="note">聚网一级注册</a></li>
+                <li><a href="这里填写聚网App链接" class="note">聚网App</a></li>
+                <li><a href="这里填写聚网网页端链接" class="note">聚网网页端</a></li>
+                <li>官方邀请码20000</li>
+            </ul>
+        </div>
+        
+        <div class="platform">
+            <h3>推广教程</h3>
+            <ul class="link-list">
+                <li><a href="这里填写新手教程①链接" class="note">新手教程①</a></li>
+                <li><a href="这里填写新手教程②链接" class="note">新手教程②</a></li>
+                <li><a href="这里填写新手教程③链接" class="note">新手教程③</a></li>
+                <li><a href="这里填写直播间话术链接" class="note">直播间话术</a></li>
+            </ul>
+        </div>
     </div>
-  </div>
-
-  <!-- 底部信息 -->
-  <div class="nk-footer nk-footer-fluid bg-lighter">
-    <div class="container-xl">
-      <div class="nk-footer-wrap">
-        <a href="https://beian.miit.gov.cn/" class="footer-link" style="text-align:center;">备案号：赣ICP备2023009047号-1</a>
-        <div style="text-align:center;">Copyright © 2024 号卡平台--诚招经销商. All rights reserved.</div>
-        <div>© 2025 号卡平台</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 引入 jQuery 确保加载 -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    // 工具数据（根据实际完整数据替换，这里示例部分数据保证格式）
-    var tool_list = [
-      {
-        "id": 9,
-        "title": "朽月通讯（免税佣金，无6%）",
-        "icon": "icon ni ni-box",
-        "items": [
-          {
-            "id": 96,
-            "title": "朽月一级注册",
-            "alias": "https://app.xiuyuetongxun.com/m/reg.php?code=66666666",
-            "keyword": "朽月一级注册",
-            "url": "https://app.xiuyuetongxun.com/m/reg.php?code=66666666",
-            "out": true
-          },
-          {
-            "id": 99,
-            "title": "朽月产品资料",
-            "alias": "https://app.xiuyuetongxun.com/article/goods",
-            "keyword": "朽月产品资料",
-            "url": "https://app.xiuyuetongxun.com/article/goods",
-            "out": true
-          }
-          // 继续补全该分类下其他 items...
-        ]
-      },
-      {
-        "id": 2,
-        "title": "号易平台(直播免费授权，6%税）",
-        "icon": "icon ni ni-code",
-        "items": [
-          {
-            "id": 54,
-            "title": "号易一级注册",
-            "alias": "https://ec.haomifi.com/#/pages/public/register?code=400000",
-            "keyword": "bianmajiemaqi,bmjmq",
-            "url": "https://ec.haomifi.com/#/pages/public/register?code=400000",
-            "out": true
-          }
-          // 继续补全该分类下其他 items...
-        ]
-      }
-      // 继续补全其他平台分类数据...
-    ];
-
-    var tools = [];
-    var searchkw = '';
-
-    function show_category_btn(catid) {
-      if (catid == 0) {
-        $("#link_content").show();
-      } else {
-        $("#link_content").hide();
-      }
-      // 简单处理分类选中样式（若需要复杂交互可扩展）
-      $('.category-item').removeClass('active');
-      if (catid !== 0) {
-        $(`.category-item[data-id="${catid}"]`).addClass('active');
-      } else {
-        $('.category-all').addClass('active');
-      }
-    }
-
-    function show_tool_list(catid) {
-      searchkw = '';
-      $('#searchkw').val('');
-      show_category_btn(catid);
-      tools = [];
-      var html = '';
-      $.each(tool_list, function (index, value) {
-        if (catid !== 0 && value.id !== catid) return;
-        html += `
-        <div class="card card-preview category-card" data-category-id="${value.id}">
-          <div class="card-inner mt-3">
-            <div class="nya-title nk-ibx-action-item progress-rating">
-              <em class="${value.icon}"></em>
-              <span class="nk-menu-text font-weight-bold">${value.title}</span>
-            </div>
-            <div class="row g-2">`;
-        $.each(value.items, function (idx, item) {
-          tools.push(item);
-          html += `
-            <div class="col-lg-3 col-md-4 col-6">
-              <a href="${item.url}" data-id="${item.id}" class="btn btn-wider btn-block btn-xl btn-outline-light tool-link" ${item.out ? 'target="_blank"' : ''}>${item.title}</a>
-            </div>`;
-        });
-        html += `
-            </div>
-          </div>
-        </div>`;
-      });
-      $('#toollist').html(html);
-      bind_statistics();
-    }
-
-    function bind_statistics() {
-      $(".tool-link").click(function () {
-        var id = $(this).attr('data-id');
-        // 这里统计逻辑可根据实际完善，比如发请求
-        console.log('统计点击：', id);
-      });
-    }
-
-    $(document).ready(function () {
-      show_tool_list(0);
-      // 若有搜索框逻辑可补充，比如：
-      // $("#searchkw").on('input', function(){...})
-    });
-  </script>
 </body>
-
 </html>

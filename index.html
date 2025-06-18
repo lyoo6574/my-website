@@ -6,206 +6,16 @@
         <title>号卡中心 - 导航网</title>
         <meta name="keywords" content="">
         <meta name="description" content="">
-        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <!-- 恢复原项目CSS -->
+        <link rel="stylesheet" href="/static/css/dashlite.css">
+        <link rel="stylesheet" href="/static/css/style.css?v=1001">
         <style>
-            :root {
-                --primary: #3490dc;
-                --light: #f8f9fa;
-                --gray: #6c757d;
-                --gray-light: #f1f3f5;
-                --red: #e74a3b;
+            /* 补充必要的自定义样式（如有冲突可调整） */
+            .nk-content-body {
+                min-height: calc(100vh - 120px); /* 调整内容区最小高度 */
             }
-            
-            body {
-                font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-                background-color: #f8f9fa;
-            }
-            
-            .nk-wrap {
-                min-height: 100vh;
-                display: flex;
-                flex-direction: column;
-            }
-            
-            .nk-header {
-                background-color: white;
-                box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-                position: sticky;
-                top: 0;
-                z-index: 100;
-            }
-            
-            .nk-header-brand {
-                display: flex;
-                align-items: center;
-            }
-            
-            .logo-link {
-                display: flex;
-                align-items: center;
-                color: #333;
-                text-decoration: none;
-            }
-            
-            .logo-link img {
-                height: 30px;
-                margin-right: 10px;
-            }
-            
-            .nk-header-tools {
-                display: flex;
-                align-items: center;
-            }
-            
-            .nk-header-mobile {
-                display: flex;
-                align-items: center;
-                width: 100%;
-            }
-            
-            .nk-nav-toggle {
-                color: #333;
-                font-size: 1.5rem;
-                text-decoration: none;
-            }
-            
-            .nk-menu {
-                display: flex;
-                list-style: none;
-                margin: 0;
-                padding: 0;
-            }
-            
-            .nk-menu-item {
-                margin-left: 1rem;
-            }
-            
-            .nk-menu-link {
-                display: flex;
-                align-items: center;
-                color: #333;
-                text-decoration: none;
-                padding: 0.5rem;
-                border-radius: 0.25rem;
-            }
-            
-            .nk-menu-link:hover {
-                background-color: #f1f3f5;
-            }
-            
-            .nk-menu-icon {
-                margin-right: 0.5rem;
-            }
-            
-            .nk-content {
-                flex-grow: 1;
-                padding: 1.5rem 0;
-            }
-            
-            .card {
-                border: none;
-                border-radius: 0.375rem;
-                box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-                margin-bottom: 1.5rem;
-            }
-            
-            .card-inner {
-                padding: 1.5rem;
-            }
-            
-            .nya-title {
-                display: flex;
-                align-items: center;
-                margin-bottom: 1rem;
-                padding-bottom: 0.5rem;
-                border-bottom: 1px solid #e9ecef;
-            }
-            
-            .nya-title .icon {
-                font-size: 1.25rem;
-                margin-right: 0.5rem;
-                color: var(--primary);
-            }
-            
-            .btn {
-                border-radius: 0.375rem;
-                font-weight: 500;
-                transition: all 0.2s;
-            }
-            
-            .btn-outline-light {
-                color: #495057;
-                border-color: #e9ecef;
-            }
-            
-            .btn-outline-light:hover {
-                background-color: #e9ecef;
-            }
-            
-            .btn-wider {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
-            
-            .breadcrumb {
-                background-color: transparent;
-                padding: 0;
-                margin-bottom: 1rem;
-            }
-            
-            .breadcrumb-item {
-                margin-right: 1rem;
-            }
-            
-            .breadcrumb-item a {
-                color: #495057;
-                text-decoration: none;
-            }
-            
-            .breadcrumb-item.active {
-                color: var(--primary);
-                font-weight: 500;
-            }
-            
-            .preview-list {
-                list-style: none;
-                margin: 0;
-                padding: 0;
-            }
-            
-            .preview-item {
-                margin-bottom: 0.5rem;
-            }
-            
-            .footer {
-                background-color: white;
-                border-top: 1px solid #e9ecef;
-                padding: 1rem 0;
-                margin-top: 1.5rem;
-            }
-            
-            .search-placeholder {
-                text-align: center;
-                color: var(--gray);
-                padding: 1rem;
-                width: 100%;
-            }
-            
-            .category-card {
-                transition: transform 0.2s, box-shadow 0.2s;
-            }
-            
-            .category-card:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            }
-            
-            @media (max-width: 768px) {
-                .col-lg-3 {
-                    flex: 0 0 50%;
-                    max-width: 50%;
-                }
+            .card-preview {
+                transition: all 0.3s ease;
             }
         </style>
     </head>
@@ -214,59 +24,71 @@
         <div class="nk-wrap">
             <!-- main header @s -->
             <div class="nk-header nk-header-fluid nk-header-fixed is-light">
-                <div class="container">
-                    <div class="nk-header-wrap d-flex justify-content-between align-items-center">
+                <div class="container-xl">
+                    <div class="nk-header-wrap link-between">
                         <div class="nk-header-brand">
                             <a href="/" class="logo-link text-base">
-                                <span class="nio-version" style="font-size: 21px;position: inherit;">号卡中心</span>
+                                <img src="/static/images/logo.png" class="hide-mb-sm">号卡中心
                             </a>
                         </div>
-                        <div class="nk-header-tools d-none d-lg-flex">
+                        <div class="nk-header-tools nk-header-menu" data-content="headerNav">
+                            <div class="nk-header-mobile">
+                                <div class="nk-header-brand">
+                                    <a href="/" class="logo-link text-base">
+                                        <span class="nio-version" style="font-size: 21px;position: inherit;">号卡中心</span>
+                                    </a>
+                                </div>
+                                <div class="nk-menu-trigger mr-n2">
+                                    <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="headerNav">
+                                        <em class="icon ni ni-arrow-left"></em>
+                                    </a>
+                                </div>
+                            </div>
                             <ul class="nk-menu nk-menu-main">
                                 <li class="nk-menu-item active">
                                     <a href="/" class="nk-menu-link nk-ibx-action-item">
-                                        <i class="fas fa-home nk-menu-icon"></i>
+                                        <em class="icon ni ni-home"></em>
                                         <span class="nk-menu-text">首页</span>
                                     </a>
                                 </li>
                                 <li class="nk-menu-item">
                                     <a href="/stars" class="nk-menu-link nk-ibx-action-item">
-                                        <i class="fas fa-heart nk-menu-icon"></i>
+                                        <em class="icon ni ni-heart"></em>
                                         <span class="nk-menu-text">我的收藏</span>
                                     </a>
                                 </li>
                                 <li class="nk-menu-item">
                                     <a href="/comment" class="nk-menu-link nk-ibx-action-item">
-                                        <i class="fas fa-comments nk-menu-icon"></i>
+                                        <em class="icon ni ni-comments"></em>
                                         <span class="nk-menu-text">留言反馈</span>
                                     </a>
                                 </li>
                             </ul>
                         </div>
-                        <div class="nk-header-tools">
-                            <a href="/login" class="nk-menu-link nk-ibx-action-item">
-                                <i class="fas fa-user-circle mr-1 nk-menu-icon"></i>
-                                <div>
-                                    未登录
-                                </div>
-                            </a>
+                        <div class="no-gutters">
+                            <ul class="nk-quick-nav">
+                                <li class="dropdown user-dropdown order-sm-first">
+                                    <a href="/login" class="dropdown-toggle nk-menu-link nk-ibx-action-item">
+                                        <em class="icon ni ni-user-circle mr-1"></em>
+                                        <div>未登录</div>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- main header @e -->
             <!-- content @s -->
-            <div class="nk-content nk-content-lg nk-content-fluid">
-                <div class="container">
+            <div class="nk-content nk-content-lg nk-content-fluid pt-5 pb-5">
+                <div class="container-xl">
                     <div style="color:red;margin-bottom:20px;font-size:20px;text-align:center;">所有平台注册默认一级代理，号易/172月激活10单起有补贴（一级代理）</div>
                     <div class="nk-content-body">
-                        <div id="toollist">
-                            <!-- 内容将通过JavaScript动态生成 -->
-                        </div>
-                        <div class="card card-preview" id="link_content">
+                        <div id="toollist"></div>
+                        <div class="card card-preview" id="link_content" style="display:none">
                             <div class="card-inner mt-3">
                                 <div class="nya-title nk-ibx-action-item progress-rating">
-                                    <i class="fas fa-link icon"></i>
+                                    <em class="icon ni ni-link"></em>
                                     <span class="nk-menu-text font-weight-bold">友情链接</span>
                                 </div>
                                 <div class="row g-2">
@@ -292,29 +114,33 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="https://beian.miit.gov.cn/" style="display:block; text-align:center;margin: 1rem 0;">备案号：赣ICP备2023009047号-1</a>
-                        <div style="text-align:center;margin-bottom: 1rem;">Copyright © 2025 号卡中心--诚招经销商. All rights reserved.</div>
+                        <a href="https://beian.miit.gov.cn/" style="display:block; text-align:center;">备案号：赣ICP备2023009047号-1</a>
+                        <div style="text-align:center;">Copyright © 2025 号卡中心--诚招经销商. All rights reserved.</div>
                     </div>
                 </div>
             </div>
             <!-- content @d -->
-            <footer class="footer">
-                <div class="container">
-                    <div class="nk-footer-wrap d-flex justify-content-between align-items-center">
-                        <div class="nk-footer-copyright">©2025 官方号卡平台</div>
+            <div class="nk-footer nk-footer-fluid bg-lighter">
+                <div class="container-xl">
+                    <div class="nk-footer-wrap">
+                        <div class="nk-footer-copyright">&copy;2025 官方号卡平台</div>
                     </div>
                 </div>
-            </footer>
+            </div>
             <!-- footer @e -->
         </div>
         <!-- wrap @e -->
-        <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+        <script src="//cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+        <script src="//cdn.staticfile.org/bootstrap/4.6.1/js/bootstrap.bundle.min.js"></script>
+        <script src="//cdn.staticfile.org/layer/3.5.1/layer.js"></script>
+        <script src="/static/js/nioapp.min.js"></script>
+        <script src="/static/js/script.js?v=1001"></script>
+        <script src="/static/js/common.js"></script>
         <script>
-            // 工具列表数据
             var tool_list = [{
                 "id": 9,
                 "title": "朽月通讯（免税佣金，无6%）",
-                "icon": "fas fa-box",
+                "icon": "icon ni ni-box",
                 "items": [{
                     "id": 96,
                     "title": "朽月一级注册",
@@ -399,7 +225,7 @@
             }, {
                 "id": 2,
                 "title": "号易平台(直播免费授权，6%税）",
-                "icon": "fas fa-code",
+                "icon": "icon ni ni-code",
                 "items": [{
                     "id": 54,
                     "title": "号易一级注册",
@@ -484,7 +310,7 @@
             }, {
                 "id": 3,
                 "title": "172平台（可以注销重新注册，6%税）",
-                "icon": "fas fa-map",
+                "icon": "icon ni ni-map",
                 "items": [{
                     "id": 129,
                     "title": "月激活10单起每单+5",
@@ -559,7 +385,7 @@
             }, {
                 "id": 12,
                 "title": "蓝畅（所有产品均可补结，6%税）",
-                "icon": "fas fa-box",
+                "icon": "icon ni ni-box",
                 "items": [{
                     "id": 124,
                     "title": "蓝畅钻石注册",
@@ -604,7 +430,7 @@
             }, {
                 "id": 1,
                 "title": "大鑫卡业(免税，政企卡)",
-                "icon": "fas fa-cog",
+                "icon": "icon ni ni-setting",
                 "items": [{
                     "id": 65,
                     "title": "大鑫一级注册",
@@ -689,7 +515,7 @@
             }, {
                 "id": 8,
                 "title": "聚网管家（号易物联网卡平台）",
-                "icon": "fas fa-box",
+                "icon": "icon ni ni-box",
                 "items": [{
                     "id": 94,
                     "title": "聚网一级注册",
@@ -734,7 +560,7 @@
             }, {
                 "id": 5,
                 "title": "推广教程",
-                "icon": "fas fa-comments",
+                "icon": "icon ni ni-chat-circle-fill",
                 "items": [{
                     "id": 83,
                     "title": "新手教程①",
@@ -777,123 +603,156 @@
                     "out": true
                 }]
             }];
-
-            // 页面加载完成后执行
-            $(document).ready(function() {
-                // 生成工具列表HTML
-                generateToolList(0);
-                
-                // 为分类按钮添加点击事件
-                // 为分类按钮添加点击事件
-                $(".category-item").click(function() {
-                    const catid = $(this).attr("data-id");
-                    generateToolList(catid);
-                    
-                    // 更新分类按钮激活状态
-                    $(".category-all, .category-item").removeClass("active");
-                    $(this).addClass("active");
-                    $("#link_content").hide();
-                });
-                
-                // 为"全部"分类添加点击事件
-                $(".category-all").click(function() {
-                    generateToolList(0);
-                    
-                    // 更新分类按钮激活状态
-                    $(".category-all, .category-item").removeClass("active");
-                    $(this).addClass("active");
+            var tools = [];
+            var searchkw = '';
+            function show_category_btn(catid) {
+                if (catid == 0) {
                     $("#link_content").show();
-                });
-            });
-            
-            // 生成工具列表函数
-            function generateToolList(catid) {
-                const toollist = $("#toollist");
-                toollist.empty();
-                
-                if (catid === 0) {
-                    // 显示所有分类
-                    tool_list.forEach(category => {
-                        generateCategoryCard(category);
-                    });
-                    $("#link_content").show();
+                    $(".category-all").addClass("active");
+                    $(".category-item").removeClass("active");
                 } else {
-                    // 显示指定分类
-                    const category = tool_list.find(cat => cat.id == catid);
-                    if (category) {
-                        generateCategoryCard(category);
-                        $("#link_content").hide();
-                    }
+                    $("#link_content").hide();
+                    $(".category-all").removeClass("active");
+                    $(".category-item").removeClass("active");
+                    $.each($(".category-item"), function(index, value) {
+                        if ($(value).attr('data-id') == catid) {
+                            $(value).addClass("active");
+                        }
+                    })
                 }
             }
-            
-            // 生成分类卡片函数
-            function generateCategoryCard(category) {
-                const toollist = $("#toollist");
-                let cardHTML = `
-                <div class="card card-preview category-card">
-                    <div class="card-inner mt-3">
-                        <div class="nya-title nk-ibx-action-item progress-rating">
-                            <i class="${category.icon}"></i>
-                            <span class="nk-menu-text font-weight-bold">${category.title}</span>
-                        </div>
-                        <div class="row g-2">
-                `;
-                
-                // 添加工具项
-                category.items.forEach(item => {
-                    cardHTML += `
-                    <div class="col-lg-3 col-md-4 col-6">
-                        <a href="${item.url}" class="btn btn-wider btn-block btn-xl btn-outline-light ${item.out ? 'target="_blank"' : ''}">
-                            ${item.title}
-                        </a>
-                    </div>
-                    `;
+            function show_tool_list(catid) {
+                searchkw = '';
+                $("#searchkw").val('');
+                show_category_btn(catid);
+                tools = [];
+                var html = '';
+                $.each(tool_list, function(index, value) {
+                    if (catid != 0 && value.id != catid)
+                        return;
+                    html += `
+<div class="card card-preview category-card" data-category-id="${value.id}">
+    <div class="card-inner mt-3">
+        <div class="nya-title nk-ibx-action-item progress-rating">
+            <em class="${value.icon}"></em>
+            <span class="nk-menu-text font-weight-bold">${value.title}</span>
+        </div>
+    <div class="row g-2">`;
+                    $.each(value.items, function(index, value) {
+                        tools.push(value);
+                        html += `
+            <div class="col-lg-3 col-md-4 col-6">
+                <a href="${value.url}" data-id="${value.id}" class="btn btn-wider btn-block btn-xl btn-outline-light tool-link" ${value.out ? 'target="_blank"' : ''}>${value.title}</a>
+            </div>`
+                    })
+                    html += `
+        </div>
+    </div>
+</div>`;
                 });
-                
-                cardHTML += `
-                        </div>
-                    </div>
-                </div>
-                `;
-                
-                toollist.append(cardHTML);
+                $("#toollist").html(html);
+                bind_statistics();
             }
-            
-            // 模拟工具列表查找函数（替代原find方法）
-            Array.prototype.find = function(predicate) {
-                for (let i = 0; i < this.length; i++) {
-                    if (predicate(this[i])) {
-                        return this[i];
+            function show_search_list() {
+                var list = tools.filter(v => {
+                    return v.title.indexOf(searchkw) !== -1 || v.keyword != null && v.keyword.indexOf(searchkw) !== -1
+                }
+                )
+                var html = '';
+                html += `
+<div class="card card-preview category-card">
+    <div class="card-inner mt-3">
+        <div class="nya-title nk-ibx-action-item progress-rating">
+            <em class="icon ni ni-search"></em>
+            <span class="nk-menu-text font-weight-bold">搜索结果</span>
+        </div>
+    <div class="row g-2">`;
+                if (list.length > 0) {
+                    $.each(list, function(index, value) {
+                        html += `
+            <div class="col-lg-3 col-md-4 col-6">
+                <a href="${value.url}" data-id="${value.id}" class="btn btn-wider btn-block btn-xl btn-outline-light tool-link" ${value.out ? 'target="_blank"' : ''}>${value.title}</a>
+            </div>`
+                    })
+                } else {
+                    html += `<p class="search-placeholder">暂无搜索结果</p>`
+                }
+                html += `
+        </div>
+    </div>
+</div>`;
+                $("#toollist").html(html);
+                bind_statistics();
+                $("#link_content").hide();
+                $(".category-all").removeClass("active");
+                $(".category-item").removeClass("active");
+            }
+            function watch_searchkw(kw) {
+                if (kw != searchkw) {
+                    searchkw = kw;
+                    if (searchkw == '') {
+                        show_tool_list(0)
+                    } else {
+                        show_search_list()
                     }
                 }
-                return undefined;
-            };
+            }
+            function bind_statistics() {
+                $(".tool-link").click(function() {
+                    var id = $(this).attr('data-id');
+                    $.ajax({
+                        type: "POST",
+                        url: "/statistics",
+                        data: {
+                            id: id
+                        },
+                        dataType: 'json',
+                        async: true,
+                        success: function(data) {
+                            console.log('statistics ok ' + id)
+                        }
+                    });
+                });
+            }
+            $(document).ready(function() {
+                show_tool_list(0);
+                $("#searchkw").on('input', function() {
+                    watch_searchkw($(this).val().trim().toLowerCase())
+                });
+                $("#searchkw").change(function() {
+                    watch_searchkw($(this).val().trim().toLowerCase())
+                });
+                $(document).keydown(function(event) {
+                    if (event.ctrlKey && event.keyCode == 70) {
+                        $("#searchkw").focus();
+                        return false;
+                    }
+                });
+            })
         </script>
-        
-        <!-- 分类导航栏（在内容区域上方） -->
-        <div class="nk-content nk-content-fluid p-0 mb-4">
+        <!-- 分类导航栏 -->
+        <div class="nk-content nk-content-fluid p-0">
             <div class="nk-block">
                 <div class="card">
                     <div class="card-inner p-2">
-                        <div class="container">
+                        <div class="container-xl">
                             <nav>
                                 <ul class="breadcrumb breadcrumb-pipe">
-                                    <li class="breadcrumb-item fs-16px category-all active"><a href="javascript:generateToolList(0)">全部</a></li>
+                                    <li class="breadcrumb-item fs-16px category-all active"><a href="javascript:show_tool_list(0)">全部</a></li>
                                     
-                                    <li class="breadcrumb-item fs-16px category-item" data-id="9"><a href="javascript:$('.category-item[data-id=\"9\"]').click();">朽月通讯（免税佣金，无6%）</a></li>
+                                    <li class="breadcrumb-item fs-16px category-item" data-id="9"><a href="javascript:show_tool_list(9)">朽月通讯（免税佣金，无6%）</a></li>
                                     
-                                    <li class="breadcrumb-item fs-16px category-item" data-id="2"><a href="javascript:$('.category-item[data-id=\"2\"]').click();">号易平台(直播免费授权，6%税）</a></li>
+                                    <li class="breadcrumb-item fs-16px category-item" data-id="2"><a href="javascript:show_tool_list(2)">号易平台(直播免费授权，6%税）</a></li>
                                     
-                                    <li class="breadcrumb-item fs-16px category-item" data-id="3"><a href="javascript:$('.category-item[data-id=\"3\"]').click();">172平台（可注销重注，6%税）</a></li>
+                                    <li class="breadcrumb-item fs-16px category-item" data-id="3"><a href="javascript:show_tool_list(3)">172平台（可注销重注，6%税）</a></li>
                                     
-                                    <li class="breadcrumb-item fs-16px category-item" data-id="12"><a href="javascript:$('.category-item[data-id=\"12\"]').click();">蓝畅（所有产品均可补结，6%税）</a></li>
+                                    <li class="breadcrumb-item fs-16px category-item" data-id="12"><a href="javascript:show_tool_list(12)">蓝畅（所有产品均可补结，6%税）</a></li>
                                     
-                                    <li class="breadcrumb-item fs-16px category-item" data-id="1"><a href="javascript:$('.category-item[data-id=\"1\"]').click();">大鑫卡业(免税，政企卡)</a></li>
+                                    <li class="breadcrumb-item fs-16px category-item" data-id="1"><a href="javascript:show_tool_list(1)">大鑫卡业(免税，政企卡)</a></li>
                                     
-                                    <li class="breadcrumb-item fs-16px category-item" data-id="8"><a href="javascript:$('.category-item[data-id=\"8\"]').click();">聚网管家（号易物联卡平台）</a></li>
+                                    <li class="breadcrumb-item fs-16px category-item" data-id="8"><a href="javascript:show_tool_list(8)">聚网管家（号易物联卡平台）</a></li>
                                     
-                                    <li class="breadcrumb-item fs-16px category-item" data-id="5"><a href="javascript:$('.category-item[data-id=\"5\"]').click();">推广教程</a></li>
+                                    <li class="breadcrumb-item fs-16px category-item" data-id="5"><a href="javascript:show_tool_list(5)">推广教程</a></li>
                                     
                                 </ul>
                             </nav>

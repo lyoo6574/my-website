@@ -4,247 +4,215 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>号卡平台</title>
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_3936940_3452w430w0.css"> <!-- 阿里巴巴图标库 -->
     <style>
-        /* 全局样式设置 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Microsoft YaHei", sans-serif;
-        }
+        /* 全局样式 */
+        * {margin: 0;padding: 0;box-sizing: border-box;font-family: "Microsoft YaHei", sans-serif;}
+        body {background-color: #f8f8f8;color: #333;line-height: 1.6;padding: 12px;}
         
-        body {
-            background-color: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
-            padding: 15px;
-        }
-        
-        /* 标题样式 */
+        /* 页面标题 */
         .page-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #e64340;
-            border-bottom: 2px solid #e64340;
-            padding-bottom: 8px;
+            font-size: 18px;font-weight: bold;margin-bottom: 15px;color: #e64340;
+            display: flex;align-items: center;gap: 8px;
+        }
+        .page-title i {font-size: 20px;}
+        
+        /* 平台卡片 */
+        .platform-card {
+            background: #fff;border-radius: 10px;padding: 16px;margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);border-left: 4px solid #e64340;
         }
         
-        /* 平台区块样式 */
-        .platform-section {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        /* 平台标题 */
+        .platform-header {
+            display: flex;align-items: center;margin-bottom: 12px;gap: 10px;
+        }
+        .platform-header i {font-size: 18px;color: #e64340;}
+        .platform-name {font-size: 16px;font-weight: bold;}
+        .platform-tag {
+            background: #fff8e1;color: #ff6600;padding: 2px 8px;border-radius: 4px;
+            font-size: 12px;margin-left: auto;
         }
         
-        /* 平台标题样式 */
-        .platform-title {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #333;
-            display: flex;
-            align-items: center;
-        }
-        
-        /* 平台标题前的小图标样式 */
-        .platform-title::before {
-            content: "◆";
-            color: #e64340;
-            margin-right: 8px;
-            font-size: 14px;
-        }
-        
-        /* 平台描述样式 */
-        .platform-desc {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 10px;
-            line-height: 1.5;
-        }
-        
-        /* 链接列表样式 */
-        .link-list {
-            list-style: none;
-        }
-        
+        /* 链接列表 */
+        .link-list {list-style: none;}
         .link-list li {
-            margin-bottom: 8px;
-            font-size: 14px;
+            display: flex;align-items: center;padding: 6px 0;border-bottom: 1px solid #f0f0f0;
+        }
+        .link-list li:last-child {border-bottom: none;}
+        .link-list i {
+            width: 24px;text-align: center;color: #0066cc;font-size: 14px;
+        }
+        .link-list a {
+            color: #0066cc;text-decoration: none;flex: 1;
+            display: block;padding: 6px 0;
+        }
+        .link-list a:hover {color: #e64340;text-decoration: underline;}
+        .link-note {
+            font-size: 12px;color: #666;padding-left: 30px;
         }
         
-        .link-list li a {
-            color: #0066cc;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .link-list li a:hover {
-            color: #e64340;
-            text-decoration: underline;
-        }
-        
-        /* 特别说明样式 */
+        /* 特别说明 */
         .special-note {
-            font-size: 13px;
-            color: #ff6600;
-            font-style: italic;
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px dashed #ffcc99;
+            font-size: 13px;color: #ff6600;font-style: italic;margin-top: 10px;
+            padding-top: 10px;border-top: 1px dashed #ffcc99;display: flex;align-items: center;
         }
+        .special-note i {margin-right: 5px;}
         
-        /* 教程部分样式 */
+        /* 教程部分 */
         .tutorial-section {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 15px;
-            margin-top: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            background: #fff;border-radius: 10px;padding: 16px;margin-top: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
-        
-        .tutorial-title {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #333;
-            display: flex;
-            align-items: center;
+        .tutorial-header {
+            display: flex;align-items: center;margin-bottom: 12px;gap: 10px;
         }
+        .tutorial-header i {font-size: 18px;color: #3498db;}
+        .tutorial-title {font-size: 16px;font-weight: bold;}
         
-        .tutorial-title::before {
-            content: "📚";
-            margin-right: 8px;
-            font-size: 16px;
-        }
-        
-        /* 响应式设计 - 适配手机屏幕 */
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-            
-            .page-title, .platform-title, .tutorial-title {
-                font-size: 15px;
-            }
-            
-            .platform-section, .tutorial-section {
-                padding: 12px;
-            }
+        /* 响应式适配 */
+        @media (max-width: 500px) {
+            body {padding: 8px;}
+            .page-title, .platform-name, .tutorial-title {font-size: 15px;}
+            .platform-card, .tutorial-section {padding: 12px;}
         }
     </style>
 </head>
 <body>
-    <!-- 页面标题 -->
-    <h1 class="page-title">号卡平台</h1>
+    <!-- 页面标题带图标 -->
+    <h1 class="page-title"><i class="iconfont icon-diannao"></i>号卡平台</h1>
     
-    <!-- 平台说明部分 -->
-    <div class="platform-section">
-        <p class="platform-desc">所有平台注册默认一级代理，号易/172月激活10单起有补贴（一级代理），有量单独私聊政策！！！</p>
+    <!-- 平台说明卡片 -->
+    <div class="platform-card">
+        <p style="color: #666;font-size: 14px;">所有平台注册默认一级代理，号易/172月激活10单起有补贴（一级代理），有量单独私聊政策！！！</p>
     </div>
     
     <!-- 朽月通讯平台 -->
-    <div class="platform-section">
-        <h2 class="platform-title">朽月通讯（免税佣金，无6%）</h2>
+    <div class="platform-card">
+        <div class="platform-header">
+            <i class="iconfont icon-yonghuzhanghu"></i>
+            <div class="platform-name">朽月通讯</div>
+            <div class="platform-tag">免税佣金</div>
+        </div>
         <ul class="link-list">
-            <li><a href="#" target="_blank">朽月一级注册</a></li>
-            <li><a href="#" target="_blank">朽月产品资料</a></li>
-            <li><a href="#" target="_blank">朽月网页登陆</a></li>
-            <li><a href="#" target="_blank">朽月APP下载</a></li>
-            <li>星钻+5 星光+10起</li>
-            <li><a href="#" target="_blank">朽月官方公众号</a></li>
-            <li>官方邀请码00000</li>
-            <li class="special-note">有量提前升星钻</li>
+            <li><i class="iconfont icon-tianjia"></i><a href="#" target="_blank">朽月一级注册</a></li>
+            <li><i class="iconfont icon-wenjian"></i><a href="#" target="_blank">朽月产品资料</a></li>
+            <li><i class="iconfont icon-diannao1"></i><a href="#" target="_blank">朽月网页登陆</a></li>
+            <li><i class="iconfont icon-shouji"></i><a href="#" target="_blank">朽月APP下载</a></li>
+            <li class="link-note">星钻+5 星光+10起</li>
+            <li><i class="iconfont icon-gongzhonghao"></i><a href="#" target="_blank">朽月官方公众号</a></li>
+            <li class="link-note">官方邀请码00000</li>
+            <li class="special-note"><i class="iconfont icon-jinggao"></i>有量提前升星钻</li>
         </ul>
     </div>
     
     <!-- 号易平台 -->
-    <div class="platform-section">
-        <h2 class="platform-title">号易平台(直播免费授权，6%税）</h2>
+    <div class="platform-card">
+        <div class="platform-header">
+            <i class="iconfont icon-yonghuzhanghu"></i>
+            <div class="platform-name">号易平台</div>
+            <div class="platform-tag">直播授权</div>
+        </div>
         <ul class="link-list">
-            <li><a href="#" target="_blank">号易一级注册</a></li>
-            <li><a href="#" target="_blank">号易产品资料</a></li>
-            <li><a href="#" target="_blank">号易电脑端登陆</a></li>
-            <li><a href="#" target="_blank">号易APP下载</a></li>
-            <li>皇冠+10，金冠+15</li>
-            <li><a href="#" target="_blank">号易官方公众号</a></li>
-            <li>官方邀请码400000</li>
-            <li class="special-note">有量提前升皇冠</li>
+            <li><i class="iconfont icon-tianjia"></i><a href="#" target="_blank">号易一级注册</a></li>
+            <li><i class="iconfont icon-wenjian"></i><a href="#" target="_blank">号易产品资料</a></li>
+            <li><i class="iconfont icon-diannao1"></i><a href="#" target="_blank">号易电脑端登陆</a></li>
+            <li><i class="iconfont icon-shouji"></i><a href="#" target="_blank">号易APP下载</a></li>
+            <li class="link-note">皇冠+10，金冠+15</li>
+            <li><i class="iconfont icon-gongzhonghao"></i><a href="#" target="_blank">号易官方公众号</a></li>
+            <li class="link-note">官方邀请码400000</li>
+            <li class="special-note"><i class="iconfont icon-jinggao"></i>有量提前升皇冠</li>
         </ul>
     </div>
     
     <!-- 172平台 -->
-    <div class="platform-section">
-        <h2 class="platform-title">172平台（可以注销重新注册，6%税）</h2>
+    <div class="platform-card">
+        <div class="platform-header">
+            <i class="iconfont icon-yonghuzhanghu"></i>
+            <div class="platform-name">172平台</div>
+            <div class="platform-tag">可注销</div>
+        </div>
         <ul class="link-list">
-            <li>月激活10单起每单+5</li>
-            <li><a href="#" target="_blank">172一级注册</a></li>
-            <li>月激活50单升黑钻</li>
-            <li><a href="#" target="_blank">172产品资料</a></li>
-            <li><a href="#" target="_blank">172平台电脑端登陆</a></li>
-            <li>App应用市场下载</li>
-            <li>邀请码60000</li>
+            <li class="link-note">月激活10单起每单+5</li>
+            <li><i class="iconfont icon-tianjia"></i><a href="#" target="_blank">172一级注册</a></li>
+            <li class="link-note">月激活50单升黑钻</li>
+            <li><i class="iconfont icon-wenjian"></i><a href="#" target="_blank">172产品资料</a></li>
+            <li><i class="iconfont icon-diannao1"></i><a href="#" target="_blank">172平台电脑端登陆</a></li>
+            <li class="link-note">App应用市场下载</li>
+            <li class="link-note">邀请码60000</li>
         </ul>
     </div>
     
     <!-- 蓝畅平台 -->
-    <div class="platform-section">
-        <h2 class="platform-title">蓝畅（所有产品均可补结，6%税）</h2>
+    <div class="platform-card">
+        <div class="platform-header">
+            <i class="iconfont icon-yonghuzhanghu"></i>
+            <div class="platform-name">蓝畅平台</div>
+            <div class="platform-tag">可补结</div>
+        </div>
         <ul class="link-list">
-            <li><a href="#" target="_blank">蓝畅钻石注册</a></li>
-            <li><a href="#" target="_blank">蓝畅APP</a></li>
-            <li><a href="#" target="_blank">蓝畅电脑端</a></li>
-            <li>全网最高结算率100%</li>
+            <li><i class="iconfont icon-tianjia"></i><a href="#" target="_blank">蓝畅钻石注册</a></li>
+            <li><i class="iconfont icon-shouji"></i><a href="#" target="_blank">蓝畅APP</a></li>
+            <li><i class="iconfont icon-diannao1"></i><a href="#" target="_blank">蓝畅电脑端</a></li>
+            <li class="link-note">全网最高结算率100%</li>
         </ul>
     </div>
     
     <!-- 大鑫卡业 -->
-    <div class="platform-section">
-        <h2 class="platform-title">大鑫卡业(免税，政企卡)</h2>
+    <div class="platform-card">
+        <div class="platform-header">
+            <i class="iconfont icon-yonghuzhanghu"></i>
+            <div class="platform-name">大鑫卡业</div>
+            <div class="platform-tag">政企卡</div>
+        </div>
         <ul class="link-list">
-            <li><a href="#" target="_blank">大鑫一级注册</a></li>
-            <li><a href="#" target="_blank">大鑫产品资料</a></li>
-            <li><a href="#" target="_blank">大鑫电脑端登陆</a></li>
-            <li><a href="#" target="_blank">大鑫手机端登陆</a></li>
-            <li><a href="#" target="_blank">大鑫App下载</a></li>
-            <li><a href="#" target="_blank">大鑫代理必看</a></li>
-            <li>官方邀请码8个8</li>
-            <li class="special-note">政企卡有量私聊议价</li>
+            <li><i class="iconfont icon-tianjia"></i><a href="#" target="_blank">大鑫一级注册</a></li>
+            <li><i class="iconfont icon-wenjian"></i><a href="#" target="_blank">大鑫产品资料</a></li>
+            <li><i class="iconfont icon-diannao1"></i><a href="#" target="_blank">大鑫电脑端登陆</a></li>
+            <li><i class="iconfont icon-shouji"></i><a href="#" target="_blank">大鑫手机端登陆</a></li>
+            <li><i class="iconfont icon-shouji"></i><a href="#" target="_blank">大鑫App下载</a></li>
+            <li><i class="iconfont icon-wenjian"></i><a href="#" target="_blank">大鑫代理必看</a></li>
+            <li class="link-note">官方邀请码8个8</li>
+            <li class="special-note"><i class="iconfont icon-jinggao"></i>政企卡有量私聊议价</li>
         </ul>
     </div>
     
     <!-- 聚网管家 -->
-    <div class="platform-section">
-        <h2 class="platform-title">聚网管家（号易物联卡平台）</h2>
+    <div class="platform-card">
+        <div class="platform-header">
+            <i class="iconfont icon-yonghuzhanghu"></i>
+            <div class="platform-name">聚网管家</div>
+            <div class="platform-tag">物联卡</div>
+        </div>
         <ul class="link-list">
-            <li><a href="#" target="_blank">聚网一级注册</a></li>
-            <li><a href="#" target="_blank">聚网App</a></li>
-            <li><a href="#" target="_blank">聚网网页端</a></li>
-            <li>官方邀请码20000</li>
+            <li><i class="iconfont icon-tianjia"></i><a href="#" target="_blank">聚网一级注册</a></li>
+            <li><i class="iconfont icon-shouji"></i><a href="#" target="_blank">聚网App</a></li>
+            <li><i class="iconfont icon-diannao1"></i><a href="#" target="_blank">聚网网页端</a></li>
+            <li class="link-note">官方邀请码20000</li>
         </ul>
     </div>
     
     <!-- 教程部分 -->
     <div class="tutorial-section">
-        <h2 class="tutorial-title">推广教程</h2>
+        <div class="tutorial-header">
+            <i class="iconfont icon-jiaocheng"></i>
+            <div class="tutorial-title">推广教程</div>
+        </div>
         <ul class="link-list">
-            <li><a href="#" target="_blank">新手教程①</a></li>
-            <li><a href="#" target="_blank">新手教程②</a></li>
-            <li><a href="#" target="_blank">新手教程③</a></li>
-            <li><a href="#" target="_blank">直播间话术</a></li>
+            <li><i class="iconfont icon-wenjian"></i><a href="#" target="_blank">新手教程①</a></li>
+            <li><i class="iconfont icon-wenjian"></i><a href="#" target="_blank">新手教程②</a></li>
+            <li><i class="iconfont icon-wenjian"></i><a href="#" target="_blank">新手教程③</a></li>
+            <li><i class="iconfont icon-biaoge"></i><a href="#" target="_blank">直播间话术</a></li>
         </ul>
     </div>
 
     <script>
-        // 这里可以添加一些简单的交互脚本
-        // 例如：点击链接时的提示
-        document.querySelectorAll('a').forEach(link => {
+        // 链接点击交互
+        document.querySelectorAll('.link-list a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
-                alert('即将跳转到: ' + this.href);
-                // 实际使用时可移除alert，取消preventDefault让链接正常跳转
+                alert('即将跳转到: ' + this.textContent);
+                // 实际使用时移除alert并取消preventDefault
             });
         });
     </script>

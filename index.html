@@ -206,46 +206,6 @@
                     "level": 0,
                     "url": "https://zhixuan.com/station?k=ZHIXUAN",
                     "out": true
-                }, {
-                    "id": 107,
-                    "title": "畅选号卡中心",
-                    "alias": "https://changxuan.com/center?k=CHANGXUAN",
-                    "keyword": "changxuanhaoka,cxhk",
-                    "request_count": 21,
-                    "category_id": 5,
-                    "level": 0,
-                    "url": "https://changxuan.com/center?k=CHANGXUAN",
-                    "out": true
-                }, {
-                    "id": 108,
-                    "title": "易号卡服务平台",
-                    "alias": "https://yika.com/service?k=YIKASERVICE",
-                    "keyword": "yihaoka,yhk",
-                    "request_count": 15,
-                    "category_id": 5,
-                    "level": 0,
-                    "url": "https://yika.com/service?k=YIKASERVICE",
-                    "out": true
-                }, {
-                    "id": 109,
-                    "title": "精选号卡商城",
-                    "alias": "https://jingxuan.com/mall?k=JINGXUAN",
-                    "keyword": "jingxuanhaoka,jxhk",
-                    "request_count": 10,
-                    "category_id": 5,
-                    "level": 0,
-                    "url": "https://jingxuan.com/mall?k=JINGXUAN",
-                    "out": true
-                }, {
-                    "id": 110,
-                    "title": "通信号卡服务平台",
-                    "alias": "https://tongxin.com/service?k=TONGXIN",
-                    "keyword": "tongxinhaoka,txhk",
-                    "request_count": 8,
-                    "category_id": 5,
-                    "level": 0,
-                    "url": "https://tongxin.com/service?k=TONGXIN",
-                    "out": true
                 }]
             }];
             var tools = [];
@@ -345,32 +305,54 @@
             function bind_statistics() {
                 $(".tool-link").click(function() {
                     var id = $(this).attr('data-id');
-                    $.ajax({``javascript
-type: "POST",
-url: "/statistics",
-data: {
-id: id
-},
-dataType: 'json',
-async: true,
-success: function(data) {
-console.log('statistics ok ' + id)
-}
-});
-});
-}
-$(document).ready(function() {
-show_tool_list(0);
-("#searchkw").on('input', function() {
-watch_searchkw((this).val().trim().toLowerCase())
-});
-("#searchkw").change(function() {
-watch_searchkw((this).val().trim().toLowerCase())
-});
-$(document).keydown(function(event) {
-if (event.ctrlKey && event.keyCode == 70) {
-$("#searchkw").focus();
-return false;
-}
-});
-})
+                    $.ajax({
+                        type: "POST",
+                        url: "/statistics",
+                        data: {
+                            id: id
+                        },
+                        dataType: 'json',
+                        async: true,
+                        success: function(data) {
+                            console.log('statistics ok ' + id)
+                        }
+                    });
+                });
+            }
+            $(document).ready(function() {
+                show_tool_list(0);
+                $("#searchkw").on('input', function() {
+                    watch_searchkw($(this).val().trim().toLowerCase())
+                });
+                $("#searchkw").change(function() {
+                    watch_searchkw($(this).val().trim().toLowerCase())
+                });
+                $(document).keydown(function(event) {
+                    if (event.ctrlKey && event.keyCode == 70) {
+                        $("#searchkw").focus();
+                        return false;
+                    }
+                });
+            })
+        </script>
+        <!-- 分类导航栏 -->
+        <div class="nk-content nk-content-fluid p-0">
+            <div class="nk-block">
+                <div class="card">
+                    <div class="card-inner p-2">
+                        <div class="container-xl">
+                            <nav>
+                                <ul class="breadcrumb breadcrumb-pipe">
+                                    <li class="breadcrumb-item fs-16px category-all active"><a href="javascript:show_tool_list(0)">全部</a></li>
+
+                                    <li class="breadcrumb-item fs-16px category-item" data-id="5"><a href="javascript:show_tool_list(5)">推广教程</a></li>
+                                    
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

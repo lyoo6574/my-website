@@ -345,7 +345,8 @@
             function bind_statistics() {
                 $(".tool-link").click(function() {
                     var id = $(this).attr('data-id');
-                    $.ajax({type: "POST",
+                    $.ajax({``javascript
+type: "POST",
 url: "/statistics",
 data: {
 id: id
@@ -360,6 +361,16 @@ console.log('statistics ok ' + id)
 }
 $(document).ready(function() {
 show_tool_list(0);
-// 移除分类导航栏相关代码
-// 原底部分类导航栏已删除，不再显示
+("#searchkw").on('input', function() {
+watch_searchkw((this).val().trim().toLowerCase())
+});
+("#searchkw").change(function() {
+watch_searchkw((this).val().trim().toLowerCase())
+});
+$(document).keydown(function(event) {
+if (event.ctrlKey && event.keyCode == 70) {
+$("#searchkw").focus();
+return false;
+}
+});
 })

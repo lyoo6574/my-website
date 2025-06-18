@@ -3,27 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>导航网页</title>
+    <title>流量卡服务平台</title>
     <style>
         /* 全局样式重置 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Microsoft YaHei', sans-serif;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        
+        /* 主题颜色定义 */
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --gray: #95a5a6;
         }
         
         /* 页面整体布局 */
         body {
-            background-color: #f5f7fa;
+            background-color: #f9fafc;
             color: #333;
             line-height: 1.6;
         }
         
         /* 导航栏样式 */
         .navbar {
-            background-color: #2c3e50;
-            color: #fff;
+            background-color: var(--dark);
+            color: var(--light);
             padding: 15px 0;
             position: sticky;
             top: 0;
@@ -42,10 +51,17 @@
         
         /* 品牌标识样式 */
         .logo {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: bold;
             text-decoration: none;
-            color: #fff;
+            color: var(--light);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 8px;
+            color: var(--primary);
         }
         
         /* 桌面端导航菜单样式 */
@@ -55,19 +71,20 @@
         }
         
         .nav-menu li {
-            margin-left: 30px;
+            margin-left: 25px;
         }
         
         .nav-menu a {
-            color: #ecf0f1;
+            color: var(--light);
             text-decoration: none;
-            font-size: 16px;
+            font-size: 15px;
             transition: color 0.3s;
             position: relative;
+            font-weight: 500;
         }
         
         .nav-menu a:hover {
-            color: #3498db;
+            color: var(--primary);
         }
         
         /* 导航链接下划线效果 */
@@ -78,7 +95,7 @@
             height: 2px;
             bottom: -5px;
             left: 0;
-            background-color: #3498db;
+            background-color: var(--primary);
             transition: width 0.3s;
         }
         
@@ -97,25 +114,225 @@
         }
         
         /* 主要内容区域样式 */
-        .content {
-            padding: 50px 0;
+        .hero {
+            background: linear-gradient(135deg, var(--primary), #2980b9);
+            color: white;
+            padding: 80px 0;
             text-align: center;
         }
         
-        .section {
-            margin-bottom: 50px;
+        .hero-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
-        h2 {
-            color: #2c3e50;
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 17px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-btn:hover {
+            background-color: #27ae60;
+        }
+        
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 60px 0;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card i {
+            font-size: 36px;
+            color: var(--primary);
             margin-bottom: 20px;
+        }
+        
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .card p {
+            color: var(--gray);
+            font-size: 15px;
+        }
+        
+        .plans {
+            background-color: #f5f7fa;
+            padding: 60px 0;
+        }
+        
+        .plans h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark);
             font-size: 28px;
         }
         
-        p {
-            color: #555;
-            max-width: 800px;
+        .plan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
             margin: 0 auto;
+        }
+        
+        .plan-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .plan-header {
+            background-color: var(--dark);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .plan-header h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        .plan-price {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .plan-price span {
+            font-size: 16px;
+            font-weight: normal;
+            color: rgba(255, 255, 255, 0.7);
+            vertical-align: super;
+        }
+        
+        .plan-features {
+            padding: 25px;
+        }
+        
+        .plan-features ul {
+            list-style: none;
+        }
+        
+        .plan-features li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .plan-features li i {
+            color: var(--secondary);
+            margin-right: 10px;
+        }
+        
+        .plan-features .btn {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 40px 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-col h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
         }
         
         /* 响应式设计 - 移动端样式 */
@@ -129,7 +346,7 @@
                 top: 60px;
                 left: -100%;
                 width: 100%;
-                background-color: #2c3e50;
+                background-color: var(--dark);
                 flex-direction: column;
                 padding: 20px;
                 transition: left 0.3s;
@@ -144,8 +361,12 @@
                 margin: 15px 0;
             }
             
-            h2 {
-                font-size: 24px;
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
             }
         }
         
@@ -164,7 +385,7 @@
     <!-- 导航栏 -->
     <nav class="navbar">
         <div class="container">
-            <a href="#" class="logo">导航网页</a>
+            <a href="#" class="logo"><i>📶</i>流量卡服务平台</a>
             
             <!-- 移动端菜单按钮 -->
             <button class="menu-btn" id="menuBtn">
@@ -174,78 +395,117 @@
             <!-- 导航菜单 -->
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home">首页</a></li>
-                <li><a href="#features">功能</a></li>
-                <li><a href="#services">服务</a></li>
-                <li><a href="#portfolio">案例</a></li>
-                <li><a href="#contact">联系我们</a></li>
+                <li><a href="#products">流量卡产品</a></li>
+                <li><a href="#plans">套餐资费</a></li>
+                <li><a href="#features">产品优势</a></li>
+                <li><a href="#faq">常见问题</a></li>
+                <li><a href="#contact">立即办理</a></li>
             </ul>
         </div>
     </nav>
     
-    <!-- 主要内容区域 -->
-    <div class="content">
-        <section id="home" class="section">
-            <h2>欢迎来到导航网页</h2>
-            <p>这是一个使用HTML和CSS创建的响应式导航网页示例，具有现代设计和流畅的交互效果。</p>
-        </section>
-        
-        <section id="features" class="section">
-            <h2>网站功能</h2>
-            <p>本网站包含响应式导航菜单、平滑滚动效果和动画过渡，在手机和桌面设备上都能良好显示。</p>
-        </section>
-        
-        <section id="services" class="section">
-            <h2>我们的服务</h2>
-            <p>提供网页设计、前端开发、响应式布局实现和交互效果开发等专业服务。</p>
-        </section>
-        
-        <section id="portfolio" class="section">
-            <h2>案例展示</h2>
-            <p>查看我们过去完成的项目案例，了解我们的设计和开发能力。</p>
-        </section>
-        
-        <section id="contact" class="section">
-            <h2>联系我们</h2>
-            <p>如有任何问题或需求，请通过下方联系方式与我们取得联系。</p>
-        </section>
-    </div>
+    <!-- 首页英雄区域 -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <h1>高速流量 畅快体验</h1>
+            <p>多款流量卡套餐任选，全国通用，即插即用，满足你的上网需求</p>
+            <a href="#products" class="cta-btn">查看产品</a>
+        </div>
+    </section>
     
-    <script>
-        // 移动端菜单切换功能
-        const menuBtn = document.getElementById('menuBtn');
-        const navMenu = document.getElementById('navMenu');
-        
-        menuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-        
-        // 点击导航链接后关闭移动端菜单
-        const navLinks = navMenu.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    navMenu.classList.remove('active');
-                }
-            });
-        });
-        
-        // 平滑滚动效果
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+    <!-- 产品优势卡片 -->
+    <section class="cards">
+        <div class="card">
+            <i>📶</i>
+            <h3>全国高速网络</h3>
+            <p>覆盖全国主要城市，4G/5G高速网络，稳定不掉线，随时随地畅快上网</p>
+        </div>
+        <div class="card">
+            <i>💳</i>
+            <h3>灵活套餐选择</h3>
+            <p>多种流量套餐可选，从日租卡到月租卡，满足不同用户的使用需求</p>
+        </div>
+        <div class="card">
+            <i>📱</i>
+            <h3>多设备支持</h3>
+            <p>支持手机、平板、随身WiFi等多种设备，一张卡解决全家上网需求</p>
+        </div>
+    </section>
+    
+    <!-- 套餐资费 -->
+    <section id="plans" class="plans">
+        <h2>精选流量套餐</h2>
+        <div class="plan-grid">
+            <div class="plan-card">
+                <div class="plan-header">
+                    <h3>日租流量卡</h3>
+                    <div class="plan-price">9.9<span>元/月</span></div>
+                    <p>适合偶尔上网用户</p>
+                </div>
+                <div class="plan-features">
+                    <ul>
+                        <li><i>✓</i> 每日1GB高速流量</li>
+                        <li><i>✓</i> 全国通用网络</li>
+                        <li><i>✓</i> 不用不花钱</li>
+                        <li><i>✓</i> 随时可停用</li>
+                    </ul>
+                    <a href="#contact" class="cta-btn btn">立即办理</a>
+                </div>
+            </div>
+            
+            <div class="plan-card">
+                <div class="plan-header" style="background-color: var(--primary);">
+                    <h3>月租流量卡</h3>
+                    <div class="plan-price">29.9<span>元/月</span></div>
+                    <p>适合轻度上网用户</p>
+                </div>
+                <div class="plan-features">
+                    <ul>
+                        <li><i>✓</i> 每月20GB高速流量</li>
+                        <li><i>✓</i> 全国通用网络</li>
+                        <li><i>✓</i> 不限速不卡顿</li>
+                        <li><i>✓</i> 自动续费省心</li>
+                    </ul>
+                    <a href="#contact" class="cta-btn btn">立即办理</a>
+                </div>
+            </div>
+            
+            <div class="plan-card">
+                <div class="plan-header">
+                    <h3>无限流量卡</h3>
+                    <div class="plan-price">59.9<span>元/月</span></div>
+                    <p>适合重度上网用户</p>
+                </div>
+                <div class="plan-features">
+                    <ul>
+                        <li><i>✓</i> 每月100GB高速流量</li>
+                        <li><i>✓</i> 全国通用网络</li>
+                        <li><i>✓</i> 高速不降速</li>
+                        <li><i>✓</i> 多设备共享</li>
+                    </ul>
+                    <a href="#contact" class="cta-btn btn">立即办理</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 联系办理区域 -->
+    <section id="contact" class="hero" style="background-color: var(--secondary);">
+        <div class="hero-container">
+            <h1>立即办理流量卡</h1>
+            <p>简单三步，轻松拥有高速上网体验，客服24小时为你服务</p>
+            <a href="#" class="cta-btn" style="background-color: var(--dark);">在线申请</a>
+            <a href="#" class="cta-btn" style="background-color: white; color: var(--secondary);">咨询客服</a>
+        </div>
+    </section>
+    
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>关于我们</h3>
+                <ul>
+                    <li><a href="#">公司简介</a></li>
+                    <li><a href="#">服务宗旨</a></li>
+                    <li><a href="#">联系方式</a></li>
+                    <li><a href="#">

@@ -4,90 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>号卡平台</title>
-    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_3936940_3452w430w0.css"> <!-- 阿里巴巴图标库 -->
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_3936940_3452w430w0.css">
     <style>
-        /* 全局样式 */
         * {margin: 0;padding: 0;box-sizing: border-box;font-family: "Microsoft YaHei", sans-serif;}
         body {background-color: #f8f8f8;color: #333;line-height: 1.6;padding: 12px;}
         
-        /* 页面标题 */
-        .page-title {
-            font-size: 18px;font-weight: bold;margin-bottom: 15px;color: #e64340;
-            display: flex;align-items: center;gap: 8px;
-        }
+        .page-title {font-size: 18px;font-weight: bold;margin-bottom: 15px;color: #e64340;display: flex;align-items: center;gap: 8px;}
         .page-title i {font-size: 20px;}
         
-        /* 平台卡片 */
-        .platform-card {
-            background: #fff;border-radius: 10px;padding: 16px;margin-bottom: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);border-left: 4px solid #e64340;
-        }
+        .platform-card {background: #fff;border-radius: 10px;padding: 16px;margin-bottom: 12px;box-shadow: 0 2px 8px rgba(0,0,0,0.05);border-left: 4px solid #e64340;}
         
-        /* 平台标题 */
-        .platform-header {
-            display: flex;align-items: center;margin-bottom: 12px;gap: 10px;
-        }
+        .platform-header {display: flex;align-items: center;margin-bottom: 12px;gap: 10px;}
         .platform-header i {font-size: 18px;color: #e64340;}
         .platform-name {font-size: 16px;font-weight: bold;}
-        .platform-tag {
-            background: #fff8e1;color: #ff6600;padding: 2px 8px;border-radius: 4px;
-            font-size: 12px;margin-left: auto;
-        }
+        .platform-tag {background: #fff8e1;color: #ff6600;padding: 2px 8px;border-radius: 4px;font-size: 12px;margin-left: auto;}
         
-        /* 链接列表 */
         .link-list {list-style: none;}
-        .link-list li {
-            display: flex;align-items: center;padding: 6px 0;border-bottom: 1px solid #f0f0f0;
-        }
+        .link-list li {display: flex;align-items: center;padding: 6px 0;border-bottom: 1px solid #f0f0f0;}
         .link-list li:last-child {border-bottom: none;}
-        .link-list i {
-            width: 24px;text-align: center;color: #0066cc;font-size: 14px;
-        }
-        .link-list a {
-            color: #0066cc;text-decoration: none;flex: 1;
-            display: block;padding: 6px 0;
-        }
+        .link-list i {width: 24px;text-align: center;color: #0066cc;font-size: 14px;}
+        .link-list a {color: #0066cc;text-decoration: none;flex: 1;display: block;padding: 6px 0;}
         .link-list a:hover {color: #e64340;text-decoration: underline;}
-        .link-note {
-            font-size: 12px;color: #666;padding-left: 30px;
-        }
+        .link-note {font-size: 12px;color: #666;padding-left: 30px;}
         
-        /* 特别说明 */
-        .special-note {
-            font-size: 13px;color: #ff6600;font-style: italic;margin-top: 10px;
-            padding-top: 10px;border-top: 1px dashed #ffcc99;display: flex;align-items: center;
-        }
+        .special-note {font-size: 13px;color: #ff6600;font-style: italic;margin-top: 10px;padding-top: 10px;border-top: 1px dashed #ffcc99;display: flex;align-items: center;}
         .special-note i {margin-right: 5px;}
         
-        /* 教程部分 */
-        .tutorial-section {
-            background: #fff;border-radius: 10px;padding: 16px;margin-top: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-        .tutorial-header {
-            display: flex;align-items: center;margin-bottom: 12px;gap: 10px;
-        }
+        .tutorial-section {background: #fff;border-radius: 10px;padding: 16px;margin-top: 15px;box-shadow: 0 2px 8px rgba(0,0,0,0.05);}
+        .tutorial-header {display: flex;align-items: center;margin-bottom: 12px;gap: 10px;}
         .tutorial-header i {font-size: 18px;color: #3498db;}
         .tutorial-title {font-size: 16px;font-weight: bold;}
         
-        /* 响应式适配 */
+        /* 友情链接样式 */
+        .friend-link {background: #fff;border-radius: 10px;padding: 16px;margin-top: 20px;box-shadow: 0 2px 8px rgba(0,0,0,0.05);}
+        .friend-title {font-size: 16px;font-weight: bold;margin-bottom: 12px;color: #333;display: flex;align-items: center;}
+        .friend-title i {margin-right: 8px;font-size: 16px;color: #95a5a6;}
+        .friend-list {display: flex;flex-wrap: wrap;gap: 15px;}
+        .friend-list a {color: #666;text-decoration: none;padding: 6px 12px;border-radius: 4px;transition: all 0.3s;}
+        .friend-list a:hover {background: #f0f8ff;color: #0066cc;}
+        
+        /* 底部备案信息 */
+        .footer {margin-top: 20px;padding: 15px 0;text-align: center;font-size: 12px;color: #999;line-height: 1.8;}
+        .footer a {color: #999;text-decoration: none;}
+        .footer a:hover {color: #0066cc;text-decoration: underline;}
+        
         @media (max-width: 500px) {
             body {padding: 8px;}
             .page-title, .platform-name, .tutorial-title {font-size: 15px;}
-            .platform-card, .tutorial-section {padding: 12px;}
+            .platform-card, .tutorial-section, .friend-link {padding: 12px;}
+            .friend-list {gap: 10px;}
         }
     </style>
 </head>
 <body>
-    <!-- 页面标题带图标 -->
     <h1 class="page-title"><i class="iconfont icon-diannao"></i>号卡平台</h1>
     
-    <!-- 平台说明卡片 -->
     <div class="platform-card">
         <p style="color: #666;font-size: 14px;">所有平台注册默认一级代理，号易/172月激活10单起有补贴（一级代理），有量单独私聊政策！！！</p>
     </div>
     
-    <!-- 朽月通讯平台 -->
     <div class="platform-card">
         <div class="platform-header">
             <i class="iconfont icon-yonghuzhanghu"></i>
@@ -106,7 +81,6 @@
         </ul>
     </div>
     
-    <!-- 号易平台 -->
     <div class="platform-card">
         <div class="platform-header">
             <i class="iconfont icon-yonghuzhanghu"></i>
@@ -125,7 +99,6 @@
         </ul>
     </div>
     
-    <!-- 172平台 -->
     <div class="platform-card">
         <div class="platform-header">
             <i class="iconfont icon-yonghuzhanghu"></i>
@@ -143,7 +116,6 @@
         </ul>
     </div>
     
-    <!-- 蓝畅平台 -->
     <div class="platform-card">
         <div class="platform-header">
             <i class="iconfont icon-yonghuzhanghu"></i>
@@ -158,7 +130,6 @@
         </ul>
     </div>
     
-    <!-- 大鑫卡业 -->
     <div class="platform-card">
         <div class="platform-header">
             <i class="iconfont icon-yonghuzhanghu"></i>
@@ -177,7 +148,6 @@
         </ul>
     </div>
     
-    <!-- 聚网管家 -->
     <div class="platform-card">
         <div class="platform-header">
             <i class="iconfont icon-yonghuzhanghu"></i>
@@ -192,7 +162,6 @@
         </ul>
     </div>
     
-    <!-- 教程部分 -->
     <div class="tutorial-section">
         <div class="tutorial-header">
             <i class="iconfont icon-jiaocheng"></i>
@@ -205,14 +174,33 @@
             <li><i class="iconfont icon-biaoge"></i><a href="#" target="_blank">直播间话术</a></li>
         </ul>
     </div>
+    
+    <!-- 友情链接模块 -->
+    <div class="friend-link">
+        <h3 class="friend-title"><i class="iconfont icon-link"></i>友情链接</h3>
+        <div class="friend-list">
+            <a href="#" target="_blank">号卡网</a>
+            <a href="#" target="_blank">通讯代理平台</a>
+            <a href="#" target="_blank">物联网卡中心</a>
+            <a href="#" target="_blank">政企卡服务平台</a>
+            <a href="#" target="_blank">流量卡商城</a>
+            <a href="#" target="_blank">通讯行业资讯</a>
+        </div>
+    </div>
+    
+    <!-- 底部备案信息 -->
+    <div class="footer">
+        <p>© 2023 大兴卡业 版权所有</p>
+        <p><a href="#" target="_blank">工信部备案号：京ICP备12345678号-1</a> | <a href="#" target="_blank">公安备案号：11010102007890</a></p>
+        <p>联系电话：138-0013-8000 | 邮箱：service@daxingkaye.cn</p>
+        <p>郑重声明：本站严格遵守国家法律法规，仅提供正规号卡服务</p>
+    </div>
 
     <script>
-        // 链接点击交互
-        document.querySelectorAll('.link-list a').forEach(link => {
+        document.querySelectorAll('.link-list a, .friend-list a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 alert('即将跳转到: ' + this.textContent);
-                // 实际使用时移除alert并取消preventDefault
             });
         });
     </script>

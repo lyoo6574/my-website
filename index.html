@@ -17,6 +17,34 @@
             .card-preview {
                 transition: all 0.3s ease;
             }
+            /* 弹窗样式 */
+            .image-popup {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0.7);
+                z-index: 1000;
+                justify-content: center;
+                align-items: center;
+            }
+            .image-popup img {
+                max-width: 90%;
+                max-height: 80vh;
+                border-radius: 8px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            }
+            .close-popup {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                color: white;
+                font-size: 28px;
+                cursor: pointer;
+                z-index: 1001;
+            }
         </style>
     </head>
     <body class="nk-body npc-invest bg-lighter">
@@ -94,6 +122,12 @@
             <!-- footer @e -->
         </div>
         <!-- wrap @e -->
+        <!-- 图片弹窗容器 -->
+        <div class="image-popup" id="imagePopup">
+            <span class="close-popup" id="closePopup">&times;</span>
+            <img src="/static/images/your-image.jpg" id="popupImage">
+        </div>
+
         <script src="//cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
         <script src="//cdn.staticfile.org/bootstrap/4.6.1/js/bootstrap.bundle.min.js"></script>
         <script src="//cdn.staticfile.org/layer/3.5.1/layer.js"></script>
@@ -189,7 +223,7 @@
                     "id": 105,
                     "title": "迈卡",
                     "alias": "https://myka.ink/index?k=VGFQTGxwVHhYT2c9",
-                    "keyword": "xintonghaoka,xtmk",
+                    "keyword": "myka",
                     "request_count": 43,
                     "category_id": 5,
                     "level": 0,
@@ -203,8 +237,9 @@
                     "request_count": 32,
                     "category_id": 5,
                     "level": 0,
-                    "url": "#",
-                    "out": true
+                    "url": "#", // 移除原URL，改为触发弹窗
+                    "out": true,
+                    "imagePath": "/static/images/your-image.jpg" // 新增图片路径
                 }]
             }];
             var tools = [];
@@ -242,12 +277,20 @@
             <span class="nk-menu-text font-weight-bold">${value.title}</span>
         </div>
     <div class="row g-2">`;
-                    $.each(value.items, function(index, value) {
-                        tools.push(value);
-                        html += `
+                    $.each(value.items, function(index, item) {
+                        tools.push(item);
+                        // 当ID=106时，修改为点击弹窗逻辑
+                        if (item.id === 106) {
+                            html += `
             <div class="col-lg-3 col-md-4 col-6">
-                <a href="${value.url}" data-id="${value.id}" class="btn btn-wider btn-block btn-xl btn-outline-light tool-link" ${value.out ? 'target="_blank"' : ''}>${value.title}</a>
+                <a href="javascript:void(0)" data-id="${item.id}" data-image="${item.imagePath}" class="btn btn-wider btn-block btn-xl btn-outline-light tool-link show-image" ${item.out ? 'target="_blank"' : ''}>${item.title}</a>
             </div>`
+                        } else {
+                            html += `
+            <div class="col-lg-3 col-md-4 col-6">
+                <a href="${item.url}" data-id="${item.id}" class="btn btn-wider btn-block btn-xl btn-outline-light tool-link" ${item.out ? 'target="_blank"' : ''}>${item.title}</a>
+            </div>`
+                        }
                     })
                     html += `
         </div>
@@ -256,6 +299,7 @@
                 });
                 $("#toollist").html(html);
                 bind_statistics();
+                bindImagePopup(); // 绑定弹窗事件
             }
             function show_search_list() {
                 var list = tools.filter(v => {
@@ -273,66 +317,21 @@
     <div class="row g-2">`;
                 if (list.length > 0) {
                     $.each(list, function(index, value) {
-                        html += `
+                        // 当ID=106时，修改为点击弹窗逻辑
+                        if (value.id === 106) {
+                            html += `
+            <div class="col-lg-3 col-md-4 col-6">
+                <a href="javascript:void(0)" data-id="${value.id}" data-image="${value.imagePath}" class="btn btn-wider btn-block btn-xl btn-outline-light tool-link show-image" ${value.out ? 'target="_blank"' : ''}>${value.title}</a>
+            </div>`
+                        } else {
+                            html += `
             <div class="col-lg-3 col-md-4 col-6">
                 <a href="${value.url}" data-id="${value.id}" class="btn btn-wider btn-block btn-xl btn-outline-light tool-link" ${value.out ? 'target="_blank"' : ''}>${value.title}</a>
-            </div>`
-                    })
-                } else {
-                    html += `<p class="search-placeholder">暂无搜索结果</p>`
-                }
-                html += `
-        </div>
-    </div>
-</div>`;
-                $("#toollist").html(html);
-                bind_statistics();
-                $("#link_content").hide();
-                $(".category-all").removeClass("active");
-                $(".category-item").removeClass("active");
-            }
-            function watch_searchkw(kw) {
-                if (kw != searchkw) {
-                    searchkw = kw;
-                    if (searchkw == '') {
-                        show_tool_list(0)
-                    } else {
-                        show_search_list()
-                    }
-                }
-            }
-            function bind_statistics() {
-                $(".tool-link").click(function() {
-                    var id = $(this).attr('data-id');
-                    $.ajax({
-                        type: "POST",
-                        url: "/statistics",
-                        data: {
-                            id: id
-                        },
-                        dataType: 'json',
-                        async: true,
-                        success: function(data) {
-                            console.log('statistics ok ' + id)
-                        }
-                    });
-                });
-            }
-            $(document).ready(function() {
-                show_tool_list(0);
-                $("#searchkw").on('input', function() {
-                    watch_searchkw($(this).val().trim().toLowerCase())
-                });
-                $("#searchkw").change(function() {
-                    watch_searchkw($(this).val().trim().toLowerCase())
-                });
-                $(document).keydown(function(event) {
-                    if (event.ctrlKey && event.keyCode == 70) {
-                        $("#searchkw").focus();
-                        return false;
-                    }
-                });
-            })
-        </script>
-    </body>
-</html>
+} else {
+html +=   <div class="col-lg-3 col-md-4 col-6"> <a href="${value.url}" data-id="${value.id}" class="btn btn-wider btn-block btn-xl btn-outline-light tool-link" ${value.out ? 'target="_blank"' : ''}>${value.title}</a> </div> 
+}
+})
+} else {
+html +=  <p class="search-placeholder">暂无搜索结果</p> 
+}
+html += ``; $("#toollist").html(html); bind_statistics(); bindImagePopup(); // 绑定弹窗事件 $("#link_content").hide(); $(".category-all").removeClass("active"); $(".category-item").removeClass("active"); } function watch_searchkw(kw) { if (kw != searchkw) { searchkw = kw; if (searchkw == '') { show_tool_list(0) } else { show_search_list() } } } function bind_statistics() { $(".tool-link:not(.show-image)").click(function() { // 排除弹窗链接 var id = $(this).attr('data-id'); $.[ajax](coco://sendMessage?ext=%7B%22s%24wiki_link%22%3A%22https%3A%2F%2Fm.baike.com%2Fwikiid%2F7222852677108629516%22%7D&msg=ajax)({ type: "POST", url: "/statistics", data: { id: id }, dataType: 'json', async: true, success: function(data) { console.log('statistics ok ' + id) } }); }); } // 绑定图片弹窗事件 [function](coco://sendMessage?ext=%7B%22s%24wiki_link%22%3A%22https%3A%2F%2Fm.baike.com%2Fwikiid%2F7211828896328400952%22%7D&msg=function) bindImagePopup() { $(".show-image").click(function() { var imagePath = $(this).data('image'); $("#popupImage").attr('src', imagePath); $("#imagePopup").fadeIn(300); }); // 关闭弹窗 $("#closePopup").click(function() { $("#imagePopup").fadeOut(300); }); // 点击弹窗背景关闭 $("#imagePopup").click(function(e) { if (e.target === this) { $(this).fadeOut(300); } }); } $(document).ready(function() { show_tool_list(0); $("#searchkw").on('input', function() { watch_searchkw($(this).val().trim().toLowerCase()) }); $("#searchkw").change(function() { watch_searchkw($(this).val().trim().toLowerCase()) }); $(document).keydown(function(event) { if (event.ctrlKey && event.keyCode == 70) { $("#searchkw").focus(); return false; } }); })
